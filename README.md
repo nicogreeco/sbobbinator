@@ -6,7 +6,7 @@
 
 ## About
 
-**"Sbobbinare"** is a playful Italian word university students use to describe the tedious task of listening to lecture recordings and writing down everything by hand to create clear notes, especially when no textbook is available. Sbobbinator makes this process easy and automatic. Just provide an audio file or a YouTube link—Sbobbinator transcribes it and turns it into polished, textbook-quality notes using powerful AI models.  
+**"Sbobbinare"** is a playful Italian word university students use to describe the tedious task of listening to lecture recordings and writing down everything by hand to create clear notes, especially when no textbook is available. Sbobbinator makes this process easy and automatic. Just provide an audio file or a YouTube link—Sbobbinator transcribes it and turns it into polished, textbook-quality notes using LLMs.  
 
 Originally designed to help students automatically transcribe and revise university lecture recordings, Sbobbinator can work with any audio content—lectures, podcasts, interviews, and more. You can also easily adjust the prompt used by the language model to suit any specific transcription needs you have.
 
