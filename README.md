@@ -16,9 +16,9 @@ Originally designed to help students automatically transcribe and revise univers
 
 Sbobbinator leverages:
 
-- **AssemblyAI** for accurate audio transcription.
+- **AssemblyAI** for audio transcription.
 - **OpenAI GPT (or Deepseek)** to rewrite transcripts with improved grammar, style, and clarity, turning them into polished notes.
-- **yt-dlp** to seamlessly download and extract audio from YouTube videos.
+- **yt-dlp** to download and extract audio from YouTube videos.
 
 The tool performs these steps:
 
