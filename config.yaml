@@ -1,0 +1,25 @@
+# Transcription settings
+transcription:
+  service: "whisper"  # Options: "whisper", "assemblyai"
+  whisper:
+    model: "distil-large-v3"  # Options: "tiny", "base", "small", "medium", "large-v3", "distil-large-v3"
+    batch_size: 2 # try 2 for large models, 4 for small/medium
+    device: "auto"  # Options: "cpu", "cuda"
+    language_code: "en"
+    beam_size: 4
+  assemblyai:
+    language_code: "en"
+    model: nano
+
+# OpenAI settings
+openai:
+  model: "gpt-4o-mini"  # Corrected model name
+
+# Chunking parameters
+chunking:
+  chunk_word_target: 500
+  max_summary_words: 300
+  enable_summary_summarization: true
+
+# Environment file path
+env_file: "./config.env"

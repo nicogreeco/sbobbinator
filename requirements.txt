@@ -1,0 +1,20 @@
+yt-dlp>=2023.0.0
+assemblyai>=0.17.0
+faster-whisper>=1.1.0
+whisperx>=3.1.0
+openai>=1.0.0
+python-dotenv>=1.0.0
+PyYAML>=6.0
+
+# Audio processing
+pydub>=0.25.1
+ffmpeg-python>=0.2.0
+
+# ML frameworks (for Whisper)
+torch>=2.0.0
+torchaudio>=2.0.0
+numpy>=1.22.0
+ctranslate2>=4.4.0
+
+# Optional for WhisperX
+pyannote.audio>=3.0.0

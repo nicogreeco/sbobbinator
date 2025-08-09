@@ -16,8 +16,8 @@ Originally designed to help students automatically transcribe and revise univers
 
 Sbobbinator leverages:
 
-- **AssemblyAI** for audio transcription.
-- **OpenAI GPT (or Deepseek)** to rewrite transcripts with improved grammar, style, and clarity, turning them into polished notes.
+- **Whisper/WhisperX** or **AssemblyAI** for audio transcription.
+- **OpenAI GPT** to rewrite transcripts with improved grammar, style, and clarity, turning them into polished notes.
 - **yt-dlp** to download and extract audio from YouTube videos.
 
 The tool performs these steps:
@@ -25,18 +25,19 @@ The tool performs these steps:
 1. **Audio Extraction:**  
    Downloads audio from YouTube videos (to an `./audio/` folder) or processes local audio files and direct audio URLs.
 2. **Transcription:**  
-   Uses AssemblyAI to convert the audio into text.
+   Uses Whisper, WhisperX, or AssemblyAI to convert the audio into text.
 3. **Chunking:**  
    Splits the transcript into manageable chunks based on a target word count.
 4. **Revision:**  
    Revises each chunk with the chosen LLM model, optionally including a running summary to provide additional context for better continuity.
 5. **Final Output:**  
-   Produces a clean, readable transcript stored as a JSON file.
+   Produces a clean, readable transcript stored as JSON and plain text files.
 
 ---
 
 ## Configuration & Setup
 
+### Environment Setup
 Create a file named `config.env` at the root of your repository with your API keys:
 
 ```bash
@@ -44,24 +45,53 @@ ASSEMBLYAI_API_KEY=your_assemblyai_api_key
 OPENAI_API_KEY=your_openai_api_key
 ```
 
-### Key Configuration Parameters (in Notebook cell labeled `# 1. CONFIGURATION`):
+### Configuration File
+Create a `config.yaml` file to customize the transcription and processing:
 
-- **Job Name:** Used to name the output JSON file (e.g., `transcript_<job_name>.json`).
-- **LLM Model:** Select your preferred model, such as OpenAI's `gpt-4o-mini` or Deepseek.
-- **Chunking Parameters:**  
-  - `CHUNK_WORD_TARGET`: Target number of words per chunk.
-  - `MAX_SUMMARY_WORDS`: Maximum number of words for the running summary.
-- **Summary Flag:**  
-  - `ENABLE_SUMMARY_SUMMARIZATION`: Set to `False` to avoid using running summaries, thus reducing input tokens and overall costs.
+```yaml
+# Transcription settings
+transcription:
+  service: "whisper"  # Options: "whisper", "whisperx", "assemblyai"
+  whisper:
+    model: "distil-large-v3"  # Options: "tiny", "base", "small", "medium", "large-v3", "distil-large-v3"
+    batch_size: 2
+    device: "auto"  # Options: "cpu", "cuda"
+    language_code: "en"
+    beam_size: 4
+  assemblyai:
+    language_code: "en"
+    model: "nano"
+
+# OpenAI settings
+openai:
+  model: "gpt-4o-mini"
+
+# Chunking parameters
+chunking:
+  chunk_word_target: 500
+  max_summary_words: 300
+  enable_summary_summarization: true
+
+# Environment file path
+env_file: "./config.env"
+```
 
 ---
 
-## AssemblyAI Models and Pricing
+## Transcription Options
 
-AssemblyAI offers two affordable transcription models:
+### Whisper (Local)
+Whisper is a free, open-source speech recognition model from OpenAI that runs locally on your machine:
 
-- **Nano:** Around $0.12 per hour of audio.
-- **Best:** Around $0.37 per hour of audio.
+- **Models**: tiny, base, small, medium, large-v3, distil-large-v3
+- **Performance**: Varies by model size; larger models have better accuracy but require more resources
+- **Cost**: Free (runs locally)
+
+### AssemblyAI (Cloud)
+AssemblyAI offers cloud-based transcription models:
+
+- **Nano**: Around $0.12 per hour of audio.
+- **Best**: Around $0.37 per hour of audio.
 
 Upon signing up, you usually receive free credits to test the service without initial costs.
 
@@ -72,12 +102,31 @@ Upon signing up, you usually receive free credits to test the service without in
 You need to install these Python packages:
 
 ```bash
-pip install yt-dlp assemblyai openai python-dotenv
+pip install -r requirements.txt
 ```
 
-Additionally, ensure that you have **ffmpeg** installed (required by yt-dlp to extract audio):
+Additionally, ensure that you have **ffmpeg** installed (required by yt-dlp to extract audio).
 
 ## Usage Instructions
+
+### Using the Standalone Script
+
+```bash
+python transcribe_audio.py path/to/audio.mp3 --job-name my_transcript
+```
+
+or with a YouTube URL:
+
+```bash
+python transcribe_audio.py "https://www.youtube.com/watch?v=example" --job-name youtube_transcript
+```
+
+Optional arguments:
+- `--job-name`: Name for output files (default: "transcript")
+- `--config`: Path to config file (default: "./config.yaml")
+
+### Using the Jupyter Notebook
+If you prefer using the notebook version:
 
 1. **Setup the environment**  
    - Enter your API keys into `config.env`.
@@ -90,23 +139,22 @@ Additionally, ensure that you have **ffmpeg** installed (required by yt-dlp to e
 
 ---
 
-## Output Example
+## Output Files
 
-Check out the included example file:
+Each transcription process produces:
 
-- [`transcript_Standford_University_Building_LLMs.json`](transcript_Standford_University_Building_LLMs.json)  
-  This example is an automated transcript and revision of a Stanford University lecture: ["Building Large Language Models (LLMs)"](https://www.youtube.com/watch?v=9vM4p9NN0Ts&t=28s&pp=ygUHbWl0IGxsbQ%3D%3D).
-
-Each output JSON includes:
-
-- `final_text`: Complete revised transcript text.
-- `running_summary`: Contextual summary used during chunk processing.
+- `transcript_<job_name>.json`: Contains complete data including:
+  - `final_text`: Complete revised transcript text.
+  - `running_summary`: Contextual summary used during chunk processing.
+  - `audio_transcript`: Original unprocessed transcript.
+  
+- `transcript_<job_name>.txt`: Plain text version of the final transcript for easy reading.
 
 ---
 
 ## Customization
 
-Feel free to adapt the provided system prompt inside the notebook. Tailor Sbobbinator to your specific audio transcription and revision needs, whether for university lessons, podcasts, interviews, or conferences.
+Feel free to adapt the provided system prompts in the script or notebook. Tailor Sbobbinator to your specific audio transcription and revision needs, whether for university lessons, podcasts, interviews, or conferences.
 
 ---
 

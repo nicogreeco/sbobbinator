@@ -1,0 +1,25 @@
+model          , batch_size, comp_type, duration_s
+distil-large-v3,          2, float32  ,    213.380
+distil-large-v3,          2, int8     ,    141.323
+distil-large-v3,          4, float32  ,    207.841
+distil-large-v3,          4, int8     ,    133.302
+large-v3       ,          2, float32  ,    374.668
+large-v3       ,          2, int8     ,    377.787
+large-v3       ,          4, float32  ,    324.606
+large-v3       ,          4, int8     ,    211.330
+large-v3-turbo ,          2, float32  ,    225.745
+large-v3-turbo ,          2, int8     ,    140.217
+large-v3-turbo ,          4, float32  ,    232.322
+large-v3-turbo ,          4, int8     ,    140.685
+medium         ,          2, float32  ,    194.687
+medium         ,          2, int8     ,    141.879
+medium         ,          4, float32  ,    169.430
+medium         ,          4, int8     ,    114.331
+small          ,          2, float32  ,     66.441
+small          ,          2, int8     ,     52.268
+small          ,          4, float32  ,     58.537
+small          ,          4, int8     ,     44.337
+turbo          ,          2, float32  ,    220.699
+turbo          ,          2, int8     ,    141.352
+turbo          ,          4, float32  ,    219.392
+turbo          ,          4, int8     ,    135.278
