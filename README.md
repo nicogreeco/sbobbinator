@@ -31,7 +31,7 @@ The tool performs these steps:
 4. **Revision:**  
    Revises each chunk with the chosen LLM model, optionally including a running summary to provide additional context for better continuity.
 5. **Final Output:**  
-   Produces a clean, readable transcript stored as JSON and plain text files.
+   Produces a clean, readable transcript stored as markdown and metadata JSON files.
 
 ---
 
@@ -112,18 +112,36 @@ Additionally, ensure that you have **ffmpeg** installed (required by yt-dlp to e
 ### Using the Standalone Script
 
 ```bash
-python transcribe_audio.py path/to/audio.mp3 --job-name my_transcript
+python sbobb.py <audio_source> <job_name> [--config config.yaml] [--service whisper|whisperx|assemblyai]
 ```
 
-or with a YouTube URL:
+**Arguments:**
+- `audio_source`: Path to audio file or YouTube URL (required)
+- `job_name`: Name for output files (required)
+- `--config`: Path to config file (optional, default: "config.yaml")
+- `--service`: Override transcription service from config (optional)
 
+**Examples:**
+
+Process a local audio file:
 ```bash
-python transcribe_audio.py "https://www.youtube.com/watch?v=example" --job-name youtube_transcript
+python sbobb.py /path/to/audio.mp3 "meeting_notes"
 ```
 
-Optional arguments:
-- `--job-name`: Name for output files (default: "transcript")
-- `--config`: Path to config file (default: "./config.yaml")
+Process a YouTube video:
+```bash
+python sbobb.py "https://www.youtube.com/watch?v=example" "lecture_1"
+```
+
+Override transcription service:
+```bash
+python sbobb.py audio.mp3 "test" --service whisperx
+```
+
+Use a different config file:
+```bash
+python sbobb.py audio.mp3 "test" --config my_config.yaml
+```
 
 ### Using the Jupyter Notebook
 If you prefer using the notebook version:
@@ -135,7 +153,7 @@ If you prefer using the notebook version:
 2. **Run the notebook**  
    - Provide the path or URL for your audio or YouTube video when prompted.
    - Let the notebook perform the transcription, chunking, and revision automatically.
-   - The final revised transcript will be available in the generated JSON file (`transcript_<job_name>.json`).
+   - The final revised transcript will be available in the generated JSON and markdown files.
 
 ---
 
@@ -143,12 +161,11 @@ If you prefer using the notebook version:
 
 Each transcription process produces:
 
-- `transcript_<job_name>.json`: Contains complete data including:
-  - `final_text`: Complete revised transcript text.
+- `transcript_<job_name>.md`: Contains the complete revised transcript text in markdown format for easy reading.
+  
+- `transcript_<job_name>_metadata.json`: Contains additional data including:
   - `running_summary`: Contextual summary used during chunk processing.
   - `audio_transcript`: Original unprocessed transcript.
-  
-- `transcript_<job_name>.txt`: Plain text version of the final transcript for easy reading.
 
 ---
 

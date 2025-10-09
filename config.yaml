@@ -13,7 +13,7 @@ transcription:
 
 # OpenAI settings
 openai:
-  model: "gpt-4o-mini"  # Corrected model name
+  model: "gpt-4.1-mini"  # Corrected model name
 
 # Chunking parameters
 chunking:
