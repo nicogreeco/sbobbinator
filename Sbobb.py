@@ -165,7 +165,7 @@ class AudioTranscriber:
             model = WhisperModel(
                 config['model'], 
                 device=config['device'], 
-                compute_type="int8"
+                compute_type=config['compute_type']
             )
             model_batch = BatchedInferencePipeline(model=model)
             
@@ -210,13 +210,15 @@ class AudioTranscriber:
             model = whisperx.load_model(
                 config['model'], 
                 config['device'], 
-                compute_type="int8"
+                # beam_size=config['beam_size'],
+                compute_type=config['compute_type']
             )
             audio = whisperx.load_audio(normalized_path)
             segments, lang = model.transcribe(
                 audio,
                 batch_size=config['batch_size'],
                 language=config['language_code'],
+                # beam_size=config['beam_size'],
                 print_progress=True
             ).values()
             

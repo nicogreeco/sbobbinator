@@ -1,37 +1,37 @@
-model,batch_size,comp_type,duration_s,memory_mb,error
-distil-large-v3,2,float16,235.33625602722168,1504.0,
-distil-large-v3,2,float32,74.58063864707947,2976.0,
-distil-large-v3,2,int8,67.96517515182495,806.0,
-distil-large-v3,4,float16,231.51051139831543,1504.0,
-distil-large-v3,4,float32,61.99133896827698,2976.0,
-distil-large-v3,4,int8,65.18280625343323,806.0,
-distil-large-v3,8,float16,230.76282835006714,1504.0,
-distil-large-v3,8,float32,,2976.0,CUDA OOM
-distil-large-v3,8,int8,63.87978982925415,806.0,
-distil-large-v3,12,float16,226.85805296897888,1504.0,
-distil-large-v3,12,float32,,2976.0,CUDA OOM
-distil-large-v3,12,int8,64.88185787200928,806.0,
-large-v3,2,float16,444.4569697380066,2976.0,
-large-v3,2,float32,764.3569438457489,5376.0,
-large-v3,2,int8,172.1386203765869,1542.0,
-large-v3,4,float16,425.30357599258423,2976.0,
-large-v3,4,float32,585.4844884872437,5376.0,
-large-v3,4,int8,148.837744474411,1542.0,
-large-v3,8,float16,416.21096444129944,2976.0,
-large-v3,8,float32,1148.2297308444977,5376.0,
-large-v3,8,int8,135.9155592918396,1542.0,
-large-v3,12,float16,,2976.0,CUDA OOM
-large-v3,12,float32,,5376.0,CUDA OOM
-large-v3,12,int8,161.8065333366394,1542.0,
-medium,2,float16,254.90329766273499,1472.0,
-medium,2,float32,98.78642773628235,2944.0,
-medium,2,int8,104.86237645149231,829.0,
-medium,4,float16,243.26170659065247,1472.0,
-medium,4,float32,76.38610887527466,2944.0,
-medium,4,int8,91.0897102355957,829.0,
-medium,8,float16,224.33483338356018,1472.0,
-medium,8,float32,,2944.0,CUDA OOM
-medium,8,int8,82.63074469566345,829.0,
-medium,12,float16,206.38422536849976,1472.0,
-medium,12,float32,,2944.0,CUDA OOM
-medium,12,int8,79.4161810874939,829.0,
+model          , batch_size, comp_type, duration_s         , memory_mb, error
+distil-large-v3,          2, float16  ,  235.33625602722168,    1504.0, 
+distil-large-v3,          2, float32  ,   74.58063864707947,    2976.0, 
+distil-large-v3,          2, int8     ,   67.96517515182495,     806.0, 
+distil-large-v3,          4, float16  ,  231.51051139831543,    1504.0, 
+distil-large-v3,          4, float32  ,   61.99133896827698,    2976.0, 
+distil-large-v3,          4, int8     ,   65.18280625343323,     806.0, 
+distil-large-v3,          8, float16  ,  230.76282835006714,    1504.0, 
+distil-large-v3,          8, float32  ,                    ,    2976.0, CUDA OOM
+distil-large-v3,          8, int8     ,   63.87978982925415,     806.0, 
+distil-large-v3,         12, float16  ,  226.85805296897888,    1504.0, 
+distil-large-v3,         12, float32  ,                    ,    2976.0, CUDA OOM
+distil-large-v3,         12, int8     ,   64.88185787200928,     806.0, 
+large-v3       ,          2, float16  ,  444.4569697380066 ,    2976.0, 
+large-v3       ,          2, float32  ,  764.3569438457489 ,    5376.0, 
+large-v3       ,          2, int8     ,  172.1386203765869 ,    1542.0, 
+large-v3       ,          4, float16  ,  425.30357599258423,    2976.0, 
+large-v3       ,          4, float32  ,  585.4844884872437 ,    5376.0, 
+large-v3       ,          4, int8     ,  148.837744474411  ,    1542.0, 
+large-v3       ,          8, float16  ,  416.21096444129944,    2976.0, 
+large-v3       ,          8, float32  , 1148.2297308444977 ,    5376.0, 
+large-v3       ,          8, int8     ,  135.9155592918396 ,    1542.0, 
+large-v3       ,         12, float16  ,                    ,    2976.0, CUDA OOM
+large-v3       ,         12, float32  ,                    ,    5376.0, CUDA OOM
+large-v3       ,         12, int8     ,  161.8065333366394 ,    1542.0, 
+medium         ,          2, float16  ,  254.90329766273499,    1472.0, 
+medium         ,          2, float32  ,   98.78642773628235,    2944.0, 
+medium         ,          2, int8     ,  104.86237645149231,     829.0, 
+medium         ,          4, float16  ,  243.26170659065247,    1472.0, 
+medium         ,          4, float32  ,   76.38610887527466,    2944.0, 
+medium         ,          4, int8     ,   91.0897102355957 ,     829.0, 
+medium         ,          8, float16  ,  224.33483338356018,    1472.0, 
+medium         ,          8, float32  ,                    ,    2944.0, CUDA OOM
+medium         ,          8, int8     ,   82.63074469566345,     829.0, 
+medium         ,         12, float16  ,  206.38422536849976,    1472.0, 
+medium         ,         12, float32  ,                    ,    2944.0, CUDA OOM
+medium         ,         12, int8     ,   79.4161810874939 ,     829.0, 
