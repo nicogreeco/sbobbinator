@@ -1,12 +1,12 @@
 # Transcription settings
 transcription:
-  service: "whisper"  # Options: "whisper", "assemblyai"
+  service: "whisperx"  # Options: "whisper", "assemblyai"
   whisper:
-    model: "distil-large-v3"  # Options: "tiny", "base", "small", "medium", "large-v3", "distil-large-v3"
-    batch_size: 2 # try 2 for large models, 4 for small/medium
-    device: "auto"  # Options: "cpu", "cuda"
-    language_code: "en"
-    beam_size: 4
+    model: "tiny"  # Options: "tiny", "base", "small", "medium", "large-v3", "distil-large-v3"
+    batch_size: 2 # try 2 for large models, 4 for small/medium for cpu
+    device: "cpu"  # Options: "cpu", "cuda"
+    language_code: "en"  
+    compute_type: "int8" # Options: "int8", "float16", "float32"
   assemblyai:
     language_code: "en"
     model: nano
